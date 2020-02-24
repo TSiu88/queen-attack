@@ -15,6 +15,7 @@ class QueenAttack
       bool horizontal = checkHorizontal(xCoord);
       bool vertical = checkVertical(yCoord);
       bool diagonal = checkDiagonal(xCoord, yCoord);
+      // do return part here 
     }
 
     static void checkHorizontal(int other)
@@ -37,7 +38,33 @@ class QueenAttack
 
     static void checkDiagonal(int otherX, int otherY)
     {
-      
+      if (otherX < 7 && otherY < 7){
+        for (int i = this.x; i < 8; i++){
+          if (this.x + i == otherX){
+            if (this.y + i == otherY){
+              return true;
+            } else if (this.y - i == otherY){
+              return true;
+            } else if (this.y + i > 8) {
+              break;
+            }
+          }
+        }
+
+        for (int j = 1; j <= this.x; j++){
+          if (this.x - j == otherX){
+            if (this.y - j == otherY){
+              return true;
+            } else if (this.y + j == otherY){
+              return true;
+            } else if (this.y - j < 0) {
+              break;
+            }
+          }
+        }
+      } else {
+        return false;
+      }
     }
   }
   static void Main()
